@@ -18,6 +18,14 @@ Download the latest JAR: https://github.com/DenzelCode/FormAPI/releases/latest
 </dependency>
 ```
 
+## Instalation:
+- Put the FormAPI.jar inside of /plugins. 
+
+In case you don't want to put it inside of plugins just execute this line of code inside of your plugin to run the EventListener:
+```
+getServer().getPluginManager().registerEvents(new com.denzelcode.form.EventListener(), this);
+```
+
 ## Example:
 **Create formulary and send it to the client:**
 ```java
