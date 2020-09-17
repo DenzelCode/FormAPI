@@ -23,15 +23,13 @@ public class EventListener implements Listener {
 
     @EventHandler(priority = EventPriority.NORMAL)
     public void onResponded(PlayerFormRespondedEvent event) {
-        if (event.wasClosed()) return;
-
         FormWindow formWindow = event.getWindow();
 
         Player player = event.getPlayer();
 
         if (!(formWindow instanceof IWindowForm)) return;
 
-        if (formWindow instanceof SimpleWindowForm) {
+        if (formWindow instanceof SimpleWindowForm && event.getResponse() != null) {
             SimpleWindowForm window = (SimpleWindowForm) formWindow;
 
             PlayerSimpleFormButtonClick e = new PlayerSimpleFormButtonClick(player, window, (Button) window.getResponse().getClickedButton());
@@ -46,7 +44,11 @@ public class EventListener implements Listener {
         if (formWindow instanceof ModalWindowForm) {
             ModalWindowForm window = (ModalWindowForm) formWindow;
 
-            PlayerModalFormSubmit e = new PlayerModalFormSubmit(player, window, window.getResponse().getClickedButtonText().equals(window.getAcceptButton()));
+            PlayerModalFormSubmit e = new PlayerModalFormSubmit(
+                    player,
+                    window,
+                    window.getResponse().getClickedButtonText().equals(window.getAcceptButton()) && event.getResponse() != null
+            );
 
             if (e.isCancelled()) return;
 
@@ -55,7 +57,7 @@ public class EventListener implements Listener {
             return;
         }
 
-        if (formWindow instanceof CustomWindowForm) {
+        if (formWindow instanceof CustomWindowForm && event.getResponse() != null) {
             CustomWindowForm window = (CustomWindowForm) formWindow;
 
             PlayerCustomFormSubmit e = new PlayerCustomFormSubmit(player, (CustomWindowForm) formWindow);
