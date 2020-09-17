@@ -184,6 +184,11 @@ public class CustomWindowForm extends FormWindowCustom implements IWindowForm {
     }
 
     @Override
+    public boolean wasClosed() {
+        return super.wasClosed() || this.getResponse() == null;
+    }
+
+    @Override
     public void sendTo(Player player) {
         if (player == null) return;
 

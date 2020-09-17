@@ -29,10 +29,14 @@ public class EventListener implements Listener {
 
         if (!(formWindow instanceof IWindowForm)) return;
 
-        if (formWindow instanceof SimpleWindowForm && event.getResponse() != null) {
+        if (formWindow instanceof SimpleWindowForm) {
             SimpleWindowForm window = (SimpleWindowForm) formWindow;
 
-            PlayerSimpleFormButtonClick e = new PlayerSimpleFormButtonClick(player, window, (Button) window.getResponse().getClickedButton());
+            PlayerSimpleFormButtonClick e = new PlayerSimpleFormButtonClick(
+                    player,
+                    window,
+                    window.getResponse() != null ? (Button) window.getResponse().getClickedButton() : null
+            );
 
             Server.getInstance().getPluginManager().callEvent(e);
 
@@ -45,7 +49,7 @@ public class EventListener implements Listener {
             PlayerModalFormSubmit e = new PlayerModalFormSubmit(
                     player,
                     window,
-                    window.getResponse().getClickedButtonText().equals(window.getAcceptButton()) && event.getResponse() != null
+                    event.getResponse() != null && window.getResponse().getClickedButtonText().equals(window.getAcceptButton())
             );
 
             Server.getInstance().getPluginManager().callEvent(e);
@@ -53,7 +57,7 @@ public class EventListener implements Listener {
             return;
         }
 
-        if (formWindow instanceof CustomWindowForm && event.getResponse() != null) {
+        if (formWindow instanceof CustomWindowForm) {
             CustomWindowForm window = (CustomWindowForm) formWindow;
 
             PlayerCustomFormSubmit e = new PlayerCustomFormSubmit(player, (CustomWindowForm) formWindow);
@@ -66,25 +70,61 @@ public class EventListener implements Listener {
                 if (element instanceof Input) {
                     Input el = (Input) element;
 
+                    if (window.wasClosed()) {
+                        el.setValue(el.getDefaultText());
+
+                        continue;
+                    }
+
                     el.setValue(window.getResponse().getInputResponse(i));
                 } else if (element instanceof Dropdown) {
                     Dropdown el = (Dropdown) element;
+
+                    if (window.wasClosed()) {
+                        el.setValue(el.getDefaultOptionIndex());
+
+                        continue;
+                    }
 
                     el.setValue(window.getResponse().getDropdownResponse(i).getElementID());
                 } else if (element instanceof Label) {
                     Label el = (Label) element;
 
+                    if (window.wasClosed()) {
+                        el.setValue("");
+
+                        continue;
+                    }
+
                     el.setValue(window.getResponse().getLabelResponse(i));
                 } else if (element instanceof Toggle) {
                     Toggle el = (Toggle) element;
+
+                    if (window.wasClosed()) {
+                        el.setValue(el.isDefaultValue());
+
+                        continue;
+                    }
 
                     el.setValue(window.getResponse().getToggleResponse(i));
                 } else if (element instanceof Slider) {
                     Slider el = (Slider) element;
 
+                    if (window.wasClosed()) {
+                        el.setValue(el.getDefaultValue());
+
+                        continue;
+                    }
+
                     el.setValue(window.getResponse().getDropdownResponse(i).getElementID());
                 } else {
                     StepSlider el = (StepSlider) element;
+
+                    if (window.wasClosed()) {
+                        el.setValue(el.getDefaultStepIndex());
+
+                        continue;
+                    }
 
                     el.setValue(window.getResponse().getDropdownResponse(i).getElementID());
                 }

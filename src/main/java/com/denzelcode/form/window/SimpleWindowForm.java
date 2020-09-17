@@ -58,6 +58,11 @@ public class SimpleWindowForm extends FormWindowSimple implements IWindowForm {
     }
 
     @Override
+    public boolean wasClosed() {
+        return super.wasClosed() || this.getResponse() == null;
+    }
+
+    @Override
     public String getName() {
         return name;
     }
