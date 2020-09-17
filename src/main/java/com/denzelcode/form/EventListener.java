@@ -23,6 +23,8 @@ public class EventListener implements Listener {
 
     @EventHandler(priority = EventPriority.NORMAL)
     public void onResponded(PlayerFormRespondedEvent event) {
+        if (event.wasClosed()) return;
+
         FormWindow formWindow = event.getWindow();
 
         Player player = event.getPlayer();
