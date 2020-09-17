@@ -137,10 +137,7 @@ public class EventListener implements Listener {
 ```
 
 - Run command /test and you will have this showed in-game:
-[Screenshot](https://i.imgur.com/PPvUcoW.png)
-
-If you submit the form you are going to have receive a message like this:
-[Screenshot](https://i.imgur.com/kOLXmet.png)
+[Screenshot](https://imgur.com/a/lFqzhYq)
 
 ## Form Types
 Modal Example
