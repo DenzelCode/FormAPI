@@ -141,12 +141,14 @@ public class EventListener implements Listener {
 
 ## Form Types
 Modal Example
-```
+```java
+import com.denzelcode.form.FormAPI;
+
 FormAPI.modalWindowForm("modal", "Custom Form", "This is a content", "Accept", "Decline")
     .sendTo(player);
 ```
 Simple Example
-```
+```java
 FormAPI.simpleWindowForm("simple", "Simple Form", "This is a content")
     .addButton("name", "This is a button")
     .addButton("name1", "Hi, im a button", "https://i.imgur.com/PPvUcoW.png")//ImageType is default URL in this case
@@ -154,7 +156,9 @@ FormAPI.simpleWindowForm("simple", "Simple Form", "This is a content")
     .sendTo(player);
 ```
 Custom Example
-```
+```java
+import com.denzelcode.form.FormAPI;
+
 List<String> optionsDropdown = new ArrayList<String>(){{
     add("Option 1");
     add("Option 2");
