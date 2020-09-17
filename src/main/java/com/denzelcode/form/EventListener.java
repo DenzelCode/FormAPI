@@ -36,8 +36,6 @@ public class EventListener implements Listener {
 
             PlayerSimpleFormButtonClick e = new PlayerSimpleFormButtonClick(player, window, (Button) window.getResponse().getClickedButton());
 
-            if (e.isCancelled()) return;
-
             Server.getInstance().getPluginManager().callEvent(e);
 
             return;
@@ -47,8 +45,6 @@ public class EventListener implements Listener {
             ModalWindowForm window = (ModalWindowForm) formWindow;
 
             PlayerModalFormSubmit e = new PlayerModalFormSubmit(player, window, window.getResponse().getClickedButtonText().equals(window.getAcceptButton()));
-
-            if (e.isCancelled()) return;
 
             Server.getInstance().getPluginManager().callEvent(e);
 
@@ -91,8 +87,6 @@ public class EventListener implements Listener {
                     el.setValue(window.getResponse().getDropdownResponse(i).getElementID());
                 }
             }
-
-            if (e.isCancelled()) return;
 
             Server.getInstance().getPluginManager().callEvent(e);
         }
