@@ -17,4 +17,8 @@ public class FormEvent<T extends IWindowForm> extends PlayerEvent {
     public T getForm() {
         return form;
     }
+
+    public boolean isClosed() {
+        return form.wasClosed();
+    }
 }

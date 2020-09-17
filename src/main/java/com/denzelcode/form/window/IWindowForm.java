@@ -7,4 +7,6 @@ public interface IWindowForm {
     String getName();
 
     void sendTo(Player player);
+
+    boolean wasClosed();
 }

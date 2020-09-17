@@ -12,11 +12,11 @@ public class Input extends ElementInput implements IElement {
     protected transient IWindowForm form;
 
     public Input(IWindowForm form, String name, String text) {
-        this(form, name, text, null);
+        this(form, name, text, "");
     }
 
     public Input(IWindowForm form, String name, String text, String placeholder) {
-        this(form, name, text, "", "");
+        this(form, name, text, placeholder, "");
     }
 
     public Input(IWindowForm form, String name, String text, String placeholder, String defaultValue) {
