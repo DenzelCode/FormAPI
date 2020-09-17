@@ -1,5 +1,5 @@
 # FormAPI
-FormAPI Provider for Nukkit.
+The best form API provider for Nukkit Cloudburst.
 
 ## What's FormAPI?
 FormAPI is an API that provides you everything that you need to enhance your plugins with the forms system implemented on Nukkit.
