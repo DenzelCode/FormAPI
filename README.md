@@ -93,7 +93,6 @@ If you submit the form you are going to have receive a message like this:
 [Screenshot](https://i.imgur.com/kOLXmet.png)
 
 ##Form Types
-**There are 3 types of forms** <br /><br />
 Modal Example
 ```
 FormAPI.modalWindowForm("modal", "Custom Form", "This is a content", "Accept", "Decline")
