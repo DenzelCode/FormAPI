@@ -53,7 +53,6 @@ public class TestCommand extends Command {
 }
 
 ```
-
 **Event listener:**
 ```java
 package com.denzelcode.test;
@@ -92,6 +91,36 @@ public class EventListener implements Listener {
 
 If you submit the form you are going to have receive a message like this:
 [Screenshot](https://i.imgur.com/kOLXmet.png)
+
+## Form Types
+Modal Example
+```
+FormAPI.modalWindowForm("modal", "Custom Form", "This is a content", "Accept", "Decline")
+    .sendTo(player);
+```
+Simple Example
+```
+FormAPI.simpleWindowForm("simple", "Simple Form", "This is a content")
+    .addButton("name", "This is a button")
+    .addButton("name1", "Hi, im a button", "https://i.imgur.com/PPvUcoW.png")//ImageType is default URL in this case
+    .addButton("name2", "This is other button", ImageType.PATH, "textures/ui/feedIcon.png")
+    .sendTo(player);
+```
+Custom Example
+```
+List<String> optionsDropdown = new ArrayList<String>(){{
+    add("Option 1");
+    add("Option 2");
+}};
+
+FormAPI.customWindowForm("custom", "Custom Form")
+    .addInput("name", "Fill the input", "Hello, im the input")
+    .addDropdown("name1", "text", optionsDropdown)
+    .addLabel("name2, "This a label")
+    .addSlider("name3", "This is a slider", 1f, 10f)
+    .addToggle("name4", "This is a toggle", false)
+    .sendTo(player);
+```
 
 ## Licensing information
 This project is licensed under LGPL-3.0. Please see the [LICENSE](/LICENSE) file for details.
