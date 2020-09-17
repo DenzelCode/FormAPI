@@ -48,7 +48,7 @@ public class TestCommand extends Command {
 
 **Event listener:**
 ```java
-package com.ubbly.extension.test;
+package com.denzelcode.test;
 
 import cn.nukkit.Player;
 import cn.nukkit.event.EventHandler;
