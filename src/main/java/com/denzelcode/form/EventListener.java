@@ -35,7 +35,7 @@ public class EventListener implements Listener {
             PlayerSimpleFormButtonClick e = new PlayerSimpleFormButtonClick(
                     player,
                     window,
-                    window.getResponse() != null ? (Button) window.getResponse().getClickedButton() : null
+                    !window.wasClosed() ? (Button) window.getResponse().getClickedButton() : null
             );
 
             Server.getInstance().getPluginManager().callEvent(e);
@@ -49,7 +49,7 @@ public class EventListener implements Listener {
             PlayerModalFormSubmit e = new PlayerModalFormSubmit(
                     player,
                     window,
-                    event.getResponse() != null && window.getResponse().getClickedButtonText().equals(window.getAcceptButton())
+                    !window.wasClosed() && window.getResponse().getClickedButtonText().equals(window.getAcceptButton())
             );
 
             Server.getInstance().getPluginManager().callEvent(e);

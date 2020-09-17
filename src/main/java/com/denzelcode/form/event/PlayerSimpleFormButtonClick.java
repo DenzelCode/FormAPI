@@ -13,6 +13,8 @@ public class PlayerSimpleFormButtonClick extends FormEvent<SimpleWindowForm> {
 
     public PlayerSimpleFormButtonClick(Player player, SimpleWindowForm form, Button button) {
         super(player, form);
+
+        this.button = button;
     }
 
     public Button getButton() {
