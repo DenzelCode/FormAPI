@@ -149,6 +149,8 @@ FormAPI.modalWindowForm("modal", "Custom Form", "This is a content", "Accept", "
 ```
 Simple Example
 ```java
+import com.denzelcode.form.FormAPI;
+
 FormAPI.simpleWindowForm("simple", "Simple Form", "This is a content")
     .addButton("name", "This is a button")
     .addButton("name1", "Hi, im a button", "https://i.imgur.com/PPvUcoW.png")//ImageType is default URL in this case
