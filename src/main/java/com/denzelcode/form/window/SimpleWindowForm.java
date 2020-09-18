@@ -83,7 +83,7 @@ public class SimpleWindowForm extends FormWindowSimple implements IWindowForm {
             public void onRun(int i) {
                 player.sendAttributes();
             }
-        }, 10);
+        }, 20);
     }
 
     public Button getElement(String name) {
