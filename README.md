@@ -78,7 +78,7 @@ public class EventListener implements Listener {
         CustomWindowForm form = event.getForm();
         Player player = event.getPlayer();
 
-        if (!form.getName().equals("login")) return;
+        if (!event.isFormValid("login")) return;
 
         Input username = form.getElement("username");
         Input password = form.getElement("password");
@@ -121,8 +121,6 @@ public class EventListener implements Listener {
         SimpleWindowForm form = event.getForm();
         Player player = event.getPlayer();
         Button button = event.getButton();
-
-        if (event.isClosed()) return;
 
         if (!event.isFormValid("minigames")) return;
 
