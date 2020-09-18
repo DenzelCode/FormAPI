@@ -102,7 +102,7 @@ public class EventListener implements Listener {
         ModalWindowForm form = event.getForm();
         Player player = event.getPlayer();
 
-        if (!form.getName().equals("login_remember")) return;
+        if (!event.isFormValid("login_remember")) return;
 
         boolean accepted = event.isAccepted();
 
@@ -124,7 +124,7 @@ public class EventListener implements Listener {
 
         if (event.isClosed()) return;
 
-        if (!form.getName().equals("minigames")) return;
+        if (!event.isFormValid("minigames")) return;
 
         player.sendMessage("Player: " + player.getName());
         player.sendMessage("Form: " + form.getName());

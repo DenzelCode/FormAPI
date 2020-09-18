@@ -39,6 +39,11 @@ public class ModalWindowForm extends FormWindowModal implements IWindowForm {
     }
 
     @Override
+    public boolean isValid(String formName) {
+        return !this.wasClosed() && this.getName().equals(formName);
+    }
+
+    @Override
     public void sendTo(Player player) {
         if (player == null) return;
 

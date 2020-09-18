@@ -9,4 +9,6 @@ public interface IWindowForm {
     void sendTo(Player player);
 
     boolean wasClosed();
+
+    boolean isValid(String formName);
 }
