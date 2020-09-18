@@ -1,5 +1,5 @@
 # FormAPI
-FormAPI Provider for Nukkit.
+The best form API provider for Nukkit Cloudburst.
 
 ## What's FormAPI?
 FormAPI is an API that provides you everything that you need to enhance your plugins with the forms system implemented on Nukkit.
@@ -18,7 +18,7 @@ Download the latest JAR: https://github.com/DenzelCode/FormAPI/releases/latest
 </dependency>
 ```
 
-## Instalation:
+## Installation:
 - Put the FormAPI.jar inside of /plugins. 
 
 In case you don't want to put it inside of plugins just execute this line of code inside of your plugin to run the EventListener:
@@ -149,6 +149,8 @@ FormAPI.modalWindowForm("modal", "Custom Form", "This is a content", "Accept", "
 ```
 Simple Example
 ```java
+import com.denzelcode.form.FormAPI;
+
 FormAPI.simpleWindowForm("simple", "Simple Form", "This is a content")
     .addButton("name", "This is a button")
     .addButton("name1", "Hi, im a button", "https://i.imgur.com/PPvUcoW.png")//ImageType is default URL in this case
