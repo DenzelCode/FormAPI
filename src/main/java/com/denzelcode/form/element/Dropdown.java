@@ -8,11 +8,11 @@ import java.util.List;
 
 public class Dropdown extends ElementDropdown implements IElement {
 
-    protected String name = "";
+    protected String name;
 
     protected transient IWindowForm form;
 
-    protected int value = 0;
+    protected int value;
 
     public Dropdown(IWindowForm form, String name, String text) {
         this(form, name, text, new ArrayList<>(), 0);
@@ -24,6 +24,8 @@ public class Dropdown extends ElementDropdown implements IElement {
 
     public Dropdown(IWindowForm form, String name, String text, List<String> options, int defaultOption) {
         super(text, options, defaultOption);
+
+        this.value = defaultOption;
 
         this.name = name;
 

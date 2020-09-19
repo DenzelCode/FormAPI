@@ -5,9 +5,9 @@ import com.denzelcode.form.window.IWindowForm;
 
 public class Toggle extends ElementToggle implements IElement {
 
-    protected String name = "";
+    protected String name;
 
-    protected boolean value = false;
+    protected boolean value;
 
     protected transient IWindowForm form;
 
@@ -17,6 +17,8 @@ public class Toggle extends ElementToggle implements IElement {
 
     public Toggle(IWindowForm form, String name, String text, boolean defaultValue) {
         super(text, defaultValue);
+
+        this.value = defaultValue;
 
         this.name = name;
 

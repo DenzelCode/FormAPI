@@ -5,9 +5,9 @@ import com.denzelcode.form.window.IWindowForm;
 
 public class Input extends ElementInput implements IElement {
 
-    protected String name = "";
+    protected String name;
 
-    protected String value = "";
+    protected String value;
 
     protected transient IWindowForm form;
 
@@ -21,6 +21,8 @@ public class Input extends ElementInput implements IElement {
 
     public Input(IWindowForm form, String name, String text, String placeholder, String defaultValue) {
         super(text, placeholder, defaultValue);
+
+        this.value = defaultValue;
 
         this.name = name;
 

@@ -5,11 +5,11 @@ import com.denzelcode.form.window.IWindowForm;
 
 public class Slider extends ElementSlider implements IElement {
 
-    protected String name = "";
+    protected String name;
 
     protected transient IWindowForm form;
 
-    protected float value = 0;
+    protected float value;
 
     public Slider(IWindowForm form, String name, String text, float min, float max) {
         this(form, name, text, min, max, -1);
@@ -21,6 +21,8 @@ public class Slider extends ElementSlider implements IElement {
 
     public Slider(IWindowForm form, String name, String text, float min, float max, int step, float defaultValue) {
         super(text, min, max, step, defaultValue);
+
+        this.value = defaultValue;
 
         this.name = name;
 

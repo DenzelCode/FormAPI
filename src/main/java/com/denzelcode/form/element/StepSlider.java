@@ -8,11 +8,11 @@ import java.util.List;
 
 public class StepSlider extends ElementStepSlider implements IElement {
 
-    protected String name = "";
+    protected String name;
 
     protected transient IWindowForm form;
 
-    protected int value = 0;
+    protected int value;
 
     public StepSlider(IWindowForm form, String name, String text) {
         this(form, name, text, new ArrayList<>());
@@ -24,6 +24,8 @@ public class StepSlider extends ElementStepSlider implements IElement {
 
     public StepSlider(IWindowForm form, String name, String text, List<String> steps, int defaultStep) {
         super(text, steps, defaultStep);
+
+        this.value = defaultStep;
 
         this.name = name;
 
