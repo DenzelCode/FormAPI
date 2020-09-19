@@ -116,7 +116,7 @@ public class EventListener implements Listener {
                         continue;
                     }
 
-                    el.setValue(window.getResponse().getDropdownResponse(i).getElementID());
+                    el.setValue(window.getResponse().getSliderResponse(i));
                 } else {
                     StepSlider el = (StepSlider) element;
 
@@ -126,7 +126,7 @@ public class EventListener implements Listener {
                         continue;
                     }
 
-                    el.setValue(window.getResponse().getDropdownResponse(i).getElementID());
+                    el.setValue(window.getResponse().getStepSliderResponse(i).getElementID());
                 }
             }
 
