@@ -167,7 +167,7 @@ List<String> optionsDropdown = new ArrayList<String>(){{
 FormAPI.customWindowForm("custom", "Custom Form")
     .addInput("name", "Fill the input", "Hello, im the input")
     .addDropdown("name1", "text", optionsDropdown)
-    .addLabel("name2, "This a label")
+    .addLabel("name2", "This a label")
     .addSlider("name3", "This is a slider", 1f, 10f)
     .addToggle("name4", "This is a toggle", false)
     .sendTo(player);
