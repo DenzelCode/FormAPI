@@ -25,6 +25,13 @@ public class Toggle extends ElementToggle implements IElement {
         this.form = form;
     }
 
+    @Override
+    public void setDefaultValue(boolean defaultValue) {
+        if (defaultValue != isDefaultValue() && value == isDefaultValue()) setValue(defaultValue);
+
+        super.setDefaultValue(defaultValue);
+    }
+
     public boolean getValue() {
         return value;
     }

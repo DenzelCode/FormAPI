@@ -29,6 +29,13 @@ public class Input extends ElementInput implements IElement {
         this.form = form;
     }
 
+    @Override
+    public void setDefaultText(String defaultText) {
+        if (!defaultText.equals(getDefaultText()) && value.equals(getDefaultText())) setValue(defaultText);
+
+        super.setDefaultText(defaultText);
+    }
+
     public String getValue() {
         return value;
     }

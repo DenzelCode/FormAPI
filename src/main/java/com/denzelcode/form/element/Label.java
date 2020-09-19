@@ -5,24 +5,28 @@ import com.denzelcode.form.window.IWindowForm;
 
 public class Label extends ElementLabel implements IElement {
 
-    protected String name = "";
+    protected String name;
 
-    protected String value = "";
+    protected String value;
 
     protected transient IWindowForm form;
 
     public Label(IWindowForm form, String text) {
-        super(text);
-
-        this.form = form;
+        this(form, "", text, "");
     }
 
     public Label(IWindowForm form, String name, String text) {
+        this(form, name, text, "");
+    }
+
+    public Label(IWindowForm form, String name, String text, String defaultValue) {
         super(text);
 
         this.name = name;
 
         this.form = form;
+
+        this.value = defaultValue;
     }
 
     public String getValue() {

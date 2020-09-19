@@ -97,6 +97,14 @@ public class CustomWindowForm extends FormWindowCustom implements IWindowForm {
         return this;
     }
 
+    public CustomWindowForm addLabel(String name, String text, String defaultValue) {
+        Label element = new Label(this, name, text, defaultValue);
+
+        addElement(element);
+
+        return this;
+    }
+
     public CustomWindowForm addSlider(String name, String text, float min, float max) {
         Slider element = new Slider(this, name, text, min, max);
 

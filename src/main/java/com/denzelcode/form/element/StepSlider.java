@@ -32,6 +32,13 @@ public class StepSlider extends ElementStepSlider implements IElement {
         this.form = form;
     }
 
+    @Override
+    public void setDefaultOptionIndex(int index) {
+        if (index != getDefaultStepIndex() && value == getDefaultStepIndex()) setValue(index);
+
+        super.setDefaultOptionIndex(index);
+    }
+
     public int getValue() {
         return value;
     }

@@ -38,6 +38,13 @@ public class Slider extends ElementSlider implements IElement {
     }
 
     @Override
+    public void setDefaultValue(float defaultValue) {
+        if (defaultValue != getDefaultValue() && value == getDefaultValue()) setValue(defaultValue);
+
+        super.setDefaultValue(defaultValue);
+    }
+
+    @Override
     public String getName() {
         return name;
     }

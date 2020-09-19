@@ -32,6 +32,13 @@ public class Dropdown extends ElementDropdown implements IElement {
         this.form = form;
     }
 
+    @Override
+    public void setDefaultOptionIndex(int index) {
+        if (index != getDefaultOptionIndex() && value == getDefaultOptionIndex()) setValue(index);
+
+        super.setDefaultOptionIndex(index);
+    }
+
     public int getValue() {
         return value;
     }
