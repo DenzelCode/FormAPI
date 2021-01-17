@@ -5,13 +5,27 @@ import cn.nukkit.form.element.Element;
 import cn.nukkit.form.element.ElementButtonImageData;
 import cn.nukkit.form.window.FormWindowCustom;
 import com.denzelcode.form.element.*;
+import com.denzelcode.form.event.PlayerCustomFormSubmit;
+import com.denzelcode.form.event.PlayerSimpleFormButtonClick;
+import com.denzelcode.form.handler.IHandler;
 
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
-public class CustomWindowForm extends FormWindowCustom implements IWindowForm {
-    protected String name;
+public class CustomWindowForm extends FormWindowCustom implements IWindowForm<PlayerCustomFormSubmit> {
+    List<IHandler<PlayerCustomFormSubmit>> handlers = new ArrayList<>();
+
+    protected String name = UUID.randomUUID().toString();
+
+    public CustomWindowForm() {
+        super("", new ArrayList<>());
+    }
+
+    public CustomWindowForm(String title) {
+        super(title, new ArrayList<>());
+    }
 
     public CustomWindowForm(String name, String title) {
         this(name, title, new ArrayList<>());
@@ -199,6 +213,26 @@ public class CustomWindowForm extends FormWindowCustom implements IWindowForm {
     @Override
     public boolean isValid(String formName) {
         return !this.wasClosed() && this.getName().equals(formName);
+    }
+
+    @Override
+    public void addHandler(IHandler<PlayerCustomFormSubmit> handler) {
+        handlers.add(handler);
+    }
+
+    @Override
+    public void clearHandlers() {
+        handlers.clear();
+    }
+
+    @Override
+    public void dispatchHandlers(PlayerCustomFormSubmit event) {
+        handlers.forEach((handler) -> handler.handle(event));
+    }
+
+    @Override
+    public List<IHandler<PlayerCustomFormSubmit>> getHandlers() {
+        return handlers;
     }
 
     @Override

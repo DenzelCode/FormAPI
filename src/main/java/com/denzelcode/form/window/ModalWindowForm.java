@@ -2,10 +2,19 @@ package com.denzelcode.form.window;
 
 import cn.nukkit.Player;
 import cn.nukkit.form.window.FormWindowModal;
+import com.denzelcode.form.event.PlayerModalFormSubmit;
+import com.denzelcode.form.event.PlayerSimpleFormButtonClick;
+import com.denzelcode.form.handler.IHandler;
 
-public class ModalWindowForm extends FormWindowModal implements IWindowForm {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
-    protected String name;
+public class ModalWindowForm extends FormWindowModal implements IWindowForm<PlayerModalFormSubmit> {
+
+    List<IHandler<PlayerModalFormSubmit>> handlers = new ArrayList<>();
+
+    protected String name = UUID.randomUUID().toString();
 
     public ModalWindowForm(String name, String title, String content, String acceptButtonText, String cancelButtonText) {
         super(title, content, acceptButtonText, cancelButtonText);
@@ -13,8 +22,8 @@ public class ModalWindowForm extends FormWindowModal implements IWindowForm {
         this.name = name;
     }
 
-    public ModalWindowForm(String name, String title, String acceptButtonText, String cancelButtonText) {
-        this(name, title, "", acceptButtonText, cancelButtonText);
+    public ModalWindowForm(String title, String content, String acceptButtonText, String cancelButtonText) {
+        super(title, content, acceptButtonText, cancelButtonText);
     }
 
     public String getAcceptButton() {
@@ -41,6 +50,26 @@ public class ModalWindowForm extends FormWindowModal implements IWindowForm {
     @Override
     public boolean isValid(String formName) {
         return !this.wasClosed() && this.getName().equals(formName);
+    }
+
+    @Override
+    public void addHandler(IHandler<PlayerModalFormSubmit> handler) {
+        handlers.add(handler);
+    }
+
+    @Override
+    public void clearHandlers() {
+        handlers.clear();
+    }
+
+    @Override
+    public void dispatchHandlers(PlayerModalFormSubmit event) {
+        handlers.forEach((handler) -> handler.handle(event));
+    }
+
+    @Override
+    public List<IHandler<PlayerModalFormSubmit>> getHandlers() {
+        return handlers;
     }
 
     @Override

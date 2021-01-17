@@ -10,12 +10,20 @@ import java.util.List;
 
 public class FormAPI extends PluginBase {
 
+    public static SimpleWindowForm simpleWindowForm(String title) {
+        return new SimpleWindowForm(title);
+    }
+
     public static SimpleWindowForm simpleWindowForm(String name, String title) {
         return new SimpleWindowForm(name, title);
     }
 
     public static SimpleWindowForm simpleWindowForm(String name, String title, String content) {
         return new SimpleWindowForm(name, title, content);
+    }
+
+    public static CustomWindowForm customWindowForm(String title) {
+        return new CustomWindowForm(title);
     }
 
     public static CustomWindowForm customWindowForm(String name, String title) {
@@ -26,8 +34,8 @@ public class FormAPI extends PluginBase {
         return new CustomWindowForm(name, title, content);
     }
 
-    public static ModalWindowForm modalWindowForm(String name, String title, String acceptButtonText, String cancelButtonText) {
-        return new ModalWindowForm(name, title, acceptButtonText, cancelButtonText);
+    public static ModalWindowForm modalWindowForm(String title, String content, String acceptButtonText, String cancelButtonText) {
+        return new ModalWindowForm(title, content, acceptButtonText, cancelButtonText);
     }
 
     public static ModalWindowForm modalWindowForm(String name, String title, String content, String acceptButtonText, String cancelButtonText) {

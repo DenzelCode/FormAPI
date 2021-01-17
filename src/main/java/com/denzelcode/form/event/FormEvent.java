@@ -4,7 +4,7 @@ import cn.nukkit.Player;
 import cn.nukkit.event.player.PlayerEvent;
 import com.denzelcode.form.window.IWindowForm;
 
-public class FormEvent<T extends IWindowForm> extends PlayerEvent {
+public class FormEvent<T extends IWindowForm<?>> extends PlayerEvent {
 
     protected T form;
 

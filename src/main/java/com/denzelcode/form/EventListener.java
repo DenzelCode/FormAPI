@@ -38,6 +38,8 @@ public class EventListener implements Listener {
                     !window.wasClosed() ? (Button) window.getResponse().getClickedButton() : null
             );
 
+            window.dispatchHandlers(e);
+
             Server.getInstance().getPluginManager().callEvent(e);
 
             return;
@@ -51,6 +53,8 @@ public class EventListener implements Listener {
                     window,
                     !window.wasClosed() && window.getResponse().getClickedButtonText().equals(window.getAcceptButton())
             );
+
+            window.dispatchHandlers(e);
 
             Server.getInstance().getPluginManager().callEvent(e);
 
@@ -129,6 +133,8 @@ public class EventListener implements Listener {
                     el.setValue(window.getResponse().getStepSliderResponse(i).getElementID());
                 }
             }
+
+            window.dispatchHandlers(e);
 
             Server.getInstance().getPluginManager().callEvent(e);
         }

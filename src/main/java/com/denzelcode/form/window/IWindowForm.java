@@ -1,8 +1,12 @@
 package com.denzelcode.form.window;
 
 import cn.nukkit.Player;
+import com.denzelcode.form.event.FormEvent;
+import com.denzelcode.form.handler.IHandler;
 
-public interface IWindowForm {
+import java.util.List;
+
+public interface IWindowForm<T extends FormEvent<?>> {
 
     String getName();
 
@@ -11,4 +15,12 @@ public interface IWindowForm {
     boolean wasClosed();
 
     boolean isValid(String formName);
+
+    void addHandler(IHandler<T> handler);
+
+    void clearHandlers();
+
+    void dispatchHandlers(T event);
+
+    List<IHandler<T>> getHandlers();
 }

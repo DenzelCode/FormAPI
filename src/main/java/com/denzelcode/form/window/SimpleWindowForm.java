@@ -7,10 +7,22 @@ import cn.nukkit.form.window.FormWindowSimple;
 import cn.nukkit.scheduler.Task;
 import com.denzelcode.form.element.Button;
 import com.denzelcode.form.element.ImageType;
+import com.denzelcode.form.event.PlayerSimpleFormButtonClick;
+import com.denzelcode.form.handler.IHandler;
 
-public class SimpleWindowForm extends FormWindowSimple implements IWindowForm {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
-    protected String name;
+public class SimpleWindowForm extends FormWindowSimple implements IWindowForm<PlayerSimpleFormButtonClick> {
+
+    List<IHandler<PlayerSimpleFormButtonClick>> handlers = new ArrayList<>();
+
+    protected String name = UUID.randomUUID().toString();
+
+    public SimpleWindowForm(String title) {
+        super(title, "");
+    }
 
     public SimpleWindowForm(String name, String title) {
         this(name, title, "");
@@ -65,6 +77,26 @@ public class SimpleWindowForm extends FormWindowSimple implements IWindowForm {
     @Override
     public boolean isValid(String formName) {
         return !this.wasClosed() && this.getName().equals(formName);
+    }
+
+    @Override
+    public void addHandler(IHandler<PlayerSimpleFormButtonClick> handler) {
+        handlers.add(handler);
+    }
+
+    @Override
+    public void clearHandlers() {
+        handlers.clear();
+    }
+
+    @Override
+    public void dispatchHandlers(PlayerSimpleFormButtonClick event) {
+        handlers.forEach((handler) -> handler.handle(event));
+    }
+
+    @Override
+    public List<IHandler<PlayerSimpleFormButtonClick>> getHandlers() {
+        return handlers;
     }
 
     @Override
