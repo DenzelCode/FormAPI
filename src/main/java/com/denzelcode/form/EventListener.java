@@ -9,9 +9,9 @@ import cn.nukkit.event.player.PlayerFormRespondedEvent;
 import cn.nukkit.form.element.Element;
 import cn.nukkit.form.window.FormWindow;
 import com.denzelcode.form.element.*;
-import com.denzelcode.form.event.PlayerCustomFormSubmit;
-import com.denzelcode.form.event.PlayerModalFormSubmit;
-import com.denzelcode.form.event.PlayerSimpleFormButtonClick;
+import com.denzelcode.form.event.CustomFormSubmitEvent;
+import com.denzelcode.form.event.ModalFormSubmitEvent;
+import com.denzelcode.form.event.SimpleFormButtonClickEvent;
 import com.denzelcode.form.window.CustomWindowForm;
 import com.denzelcode.form.window.IWindowForm;
 import com.denzelcode.form.window.ModalWindowForm;
@@ -32,7 +32,7 @@ public class EventListener implements Listener {
         if (formWindow instanceof SimpleWindowForm) {
             SimpleWindowForm window = (SimpleWindowForm) formWindow;
 
-            PlayerSimpleFormButtonClick e = new PlayerSimpleFormButtonClick(
+            SimpleFormButtonClickEvent e = new SimpleFormButtonClickEvent(
                     player,
                     window,
                     !window.wasClosed() ? (Button) window.getResponse().getClickedButton() : null
@@ -48,7 +48,7 @@ public class EventListener implements Listener {
         if (formWindow instanceof ModalWindowForm) {
             ModalWindowForm window = (ModalWindowForm) formWindow;
 
-            PlayerModalFormSubmit e = new PlayerModalFormSubmit(
+            ModalFormSubmitEvent e = new ModalFormSubmitEvent(
                     player,
                     window,
                     !window.wasClosed() && window.getResponse().getClickedButtonText().equals(window.getAcceptButton())
@@ -64,7 +64,7 @@ public class EventListener implements Listener {
         if (formWindow instanceof CustomWindowForm) {
             CustomWindowForm window = (CustomWindowForm) formWindow;
 
-            PlayerCustomFormSubmit e = new PlayerCustomFormSubmit(player, (CustomWindowForm) formWindow);
+            CustomFormSubmitEvent e = new CustomFormSubmitEvent(player, (CustomWindowForm) formWindow);
 
             List<Element> elements = window.getElements();
 

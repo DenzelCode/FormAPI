@@ -27,7 +27,7 @@ getServer().getPluginManager().registerEvents(new com.denzelcode.form.EventListe
 ```
 
 ## Example:
-**Create formulary and send it to the client:**
+**Create form and send it to the client:**
 ```java
 package com.denzelcode.test;
 
@@ -46,6 +46,7 @@ public class TestCommand extends Command {
         FormAPI.customWindowForm("login", "Custom Form")
                 .addInput("username", "Username", "Enter your username")
                 .addInput("password", "Password", "Enter your password")
+                .addHandler((e) -> System.out.println('Variable e is an instance of CustomFormSubmitEvent'))
                 .sendTo((Player) sender);
 
         return true;
@@ -64,9 +65,9 @@ import cn.nukkit.event.Listener;
 import com.denzelcode.form.FormAPI;
 import com.denzelcode.form.element.Button;
 import com.denzelcode.form.element.Input;
-import com.denzelcode.form.event.PlayerCustomFormSubmit;
-import com.denzelcode.form.event.PlayerModalFormSubmit;
-import com.denzelcode.form.event.PlayerSimpleFormButtonClick;
+import com.denzelcode.form.event.CustomFormSubmitEvent;
+import com.denzelcode.form.event.ModalFormSubmitEvent;
+import com.denzelcode.form.event.SimpleFormButtonClickEvent;
 import com.denzelcode.form.window.CustomWindowForm;
 import com.denzelcode.form.window.ModalWindowForm;
 import com.denzelcode.form.window.SimpleWindowForm;
@@ -74,7 +75,7 @@ import com.denzelcode.form.window.SimpleWindowForm;
 public class EventListener implements Listener {
 
     @EventHandler(priority = EventPriority.NORMAL)
-    public void onLoginFormSubmit(PlayerCustomFormSubmit event) {
+    public void onLoginFormSubmit(CustomFormSubmitEvent event) {
         CustomWindowForm form = event.getForm();
         Player player = event.getPlayer();
 
@@ -98,7 +99,7 @@ public class EventListener implements Listener {
     }
 
     @EventHandler(priority = EventPriority.NORMAL)
-    public void onRememberFormSubmit(PlayerModalFormSubmit event) {
+    public void onRememberFormSubmit(ModalFormSubmitEvent event) {
         ModalWindowForm form = event.getForm();
         Player player = event.getPlayer();
 
@@ -117,7 +118,7 @@ public class EventListener implements Listener {
     }
 
     @EventHandler(priority = EventPriority.NORMAL)
-    public void onMinigameFormSubmit(PlayerSimpleFormButtonClick event) {
+    public void onMinigameFormSubmit(SimpleFormButtonClickEvent event) {
         SimpleWindowForm form = event.getForm();
         Player player = event.getPlayer();
         Button button = event.getButton();
@@ -143,6 +144,7 @@ Modal Example
 import com.denzelcode.form.FormAPI;
 
 FormAPI.modalWindowForm("modal", "Custom Form", "This is a content", "Accept", "Decline")
+    .addHandler((e) -> System.out.println('Variable e is an instance of ModalFormSubmitEvent'))
     .sendTo(player);
 ```
 Simple Example
@@ -153,6 +155,7 @@ FormAPI.simpleWindowForm("simple", "Simple Form", "This is a content")
     .addButton("name", "This is a button")
     .addButton("name1", "Hi, im a button", "https://i.imgur.com/PPvUcoW.png")//ImageType is default URL in this case
     .addButton("name2", "This is other button", ImageType.PATH, "textures/ui/feedIcon.png")
+    .addHandler((e) -> System.out.println('Variable e is an instance of SimpleFormButtonClickEvent'))
     .sendTo(player);
 ```
 Custom Example
@@ -170,6 +173,7 @@ FormAPI.customWindowForm("custom", "Custom Form")
     .addLabel("name2", "This a label")
     .addSlider("name3", "This is a slider", 1f, 10f)
     .addToggle("name4", "This is a toggle", false)
+    .addHandler((e) -> System.out.println('Variable e is an instance of CustomFormSubmitEvent'))
     .sendTo(player);
 ```
 

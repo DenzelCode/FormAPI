@@ -2,17 +2,16 @@ package com.denzelcode.form.window;
 
 import cn.nukkit.Player;
 import cn.nukkit.form.window.FormWindowModal;
-import com.denzelcode.form.event.PlayerModalFormSubmit;
-import com.denzelcode.form.event.PlayerSimpleFormButtonClick;
+import com.denzelcode.form.event.ModalFormSubmitEvent;
 import com.denzelcode.form.handler.IHandler;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class ModalWindowForm extends FormWindowModal implements IWindowForm<PlayerModalFormSubmit> {
+public class ModalWindowForm extends FormWindowModal implements IWindowForm<ModalFormSubmitEvent> {
 
-    List<IHandler<PlayerModalFormSubmit>> handlers = new ArrayList<>();
+    List<IHandler<ModalFormSubmitEvent>> handlers = new ArrayList<>();
 
     protected String name = UUID.randomUUID().toString();
 
@@ -53,7 +52,7 @@ public class ModalWindowForm extends FormWindowModal implements IWindowForm<Play
     }
 
     @Override
-    public void addHandler(IHandler<PlayerModalFormSubmit> handler) {
+    public void addHandler(IHandler<ModalFormSubmitEvent> handler) {
         handlers.add(handler);
     }
 
@@ -63,12 +62,12 @@ public class ModalWindowForm extends FormWindowModal implements IWindowForm<Play
     }
 
     @Override
-    public void dispatchHandlers(PlayerModalFormSubmit event) {
+    public void dispatchHandlers(ModalFormSubmitEvent event) {
         handlers.forEach((handler) -> handler.handle(event));
     }
 
     @Override
-    public List<IHandler<PlayerModalFormSubmit>> getHandlers() {
+    public List<IHandler<ModalFormSubmitEvent>> getHandlers() {
         return handlers;
     }
 

@@ -7,16 +7,16 @@ import cn.nukkit.form.window.FormWindowSimple;
 import cn.nukkit.scheduler.Task;
 import com.denzelcode.form.element.Button;
 import com.denzelcode.form.element.ImageType;
-import com.denzelcode.form.event.PlayerSimpleFormButtonClick;
+import com.denzelcode.form.event.SimpleFormButtonClickEvent;
 import com.denzelcode.form.handler.IHandler;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class SimpleWindowForm extends FormWindowSimple implements IWindowForm<PlayerSimpleFormButtonClick> {
+public class SimpleWindowForm extends FormWindowSimple implements IWindowForm<SimpleFormButtonClickEvent> {
 
-    List<IHandler<PlayerSimpleFormButtonClick>> handlers = new ArrayList<>();
+    List<IHandler<SimpleFormButtonClickEvent>> handlers = new ArrayList<>();
 
     protected String name = UUID.randomUUID().toString();
 
@@ -80,7 +80,7 @@ public class SimpleWindowForm extends FormWindowSimple implements IWindowForm<Pl
     }
 
     @Override
-    public void addHandler(IHandler<PlayerSimpleFormButtonClick> handler) {
+    public void addHandler(IHandler<SimpleFormButtonClickEvent> handler) {
         handlers.add(handler);
     }
 
@@ -90,12 +90,12 @@ public class SimpleWindowForm extends FormWindowSimple implements IWindowForm<Pl
     }
 
     @Override
-    public void dispatchHandlers(PlayerSimpleFormButtonClick event) {
+    public void dispatchHandlers(SimpleFormButtonClickEvent event) {
         handlers.forEach((handler) -> handler.handle(event));
     }
 
     @Override
-    public List<IHandler<PlayerSimpleFormButtonClick>> getHandlers() {
+    public List<IHandler<SimpleFormButtonClickEvent>> getHandlers() {
         return handlers;
     }
 
