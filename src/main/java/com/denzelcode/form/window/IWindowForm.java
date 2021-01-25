@@ -16,7 +16,7 @@ public interface IWindowForm<T extends FormEvent<?>> {
 
     boolean isValid(String formName);
 
-    void addHandler(IHandler<T> handler);
+    IWindowForm<T> addHandler(IHandler<T> handler);
 
     void clearHandlers();
 

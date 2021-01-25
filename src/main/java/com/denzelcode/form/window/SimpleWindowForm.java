@@ -80,8 +80,10 @@ public class SimpleWindowForm extends FormWindowSimple implements IWindowForm<Si
     }
 
     @Override
-    public void addHandler(IHandler<SimpleFormButtonClickEvent> handler) {
+    public IWindowForm<SimpleFormButtonClickEvent> addHandler(IHandler<SimpleFormButtonClickEvent> handler) {
         handlers.add(handler);
+
+        return this;
     }
 
     @Override
