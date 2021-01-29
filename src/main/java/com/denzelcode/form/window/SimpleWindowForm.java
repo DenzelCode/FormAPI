@@ -31,7 +31,7 @@ public class SimpleWindowForm extends FormWindowSimple implements IWindowForm<Si
     public SimpleWindowForm(String name, String title, String content) {
         super(title, content);
 
-        this.name = name;
+        this.name = name == null ? UUID.randomUUID().toString() : name;
     }
 
     public SimpleWindowForm addButton(String text) {

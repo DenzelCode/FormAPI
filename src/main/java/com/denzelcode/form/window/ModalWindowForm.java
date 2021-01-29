@@ -18,7 +18,7 @@ public class ModalWindowForm extends FormWindowModal implements IWindowForm<Moda
     public ModalWindowForm(String name, String title, String content, String acceptButtonText, String cancelButtonText) {
         super(title, content, acceptButtonText, cancelButtonText);
 
-        this.name = name;
+        this.name = name == null ? UUID.randomUUID().toString() : name;
     }
 
     public ModalWindowForm(String title, String content, String acceptButtonText, String cancelButtonText) {

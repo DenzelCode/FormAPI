@@ -33,7 +33,7 @@ public class CustomWindowForm extends FormWindowCustom implements IWindowForm<Cu
     public CustomWindowForm(String name, String title, List<Element> contents) {
         super(title, contents);
 
-        this.name = name;
+        this.name = name == null ? UUID.randomUUID().toString() : name;
     }
 
     public CustomWindowForm(String name, String title, List<Element> contents, String icon) {
